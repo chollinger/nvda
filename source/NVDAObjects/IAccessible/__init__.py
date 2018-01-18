@@ -1192,10 +1192,10 @@ the NVDAObject for IAccessible
 		if self.IAccessibleTableUsesTableCellIndexAttrib and "table-cell-index" in self.IA2Attributes:
 			checkAncestors=True
 		obj=self.parent
-		while checkAncestors and obj and not hasattr(obj,'IAccessibleTableObject'):
+		while checkAncestors and obj and not hasattr(obj,'IAccessibleTable2Object') and not hasattr(obj,'IAccessibleTableObject'):
 			parent=obj.parent=obj.parent
 			obj=parent
-		if not obj or not hasattr(obj,'IAccessibleTableObject'):
+		if not obj or (not hasattr(obj,'IAccessibleTable2Object') and not hasattr(obj,'IAccessibleTableObject')):
 			return None
 		self._table=obj
 		return obj
